@@ -55,10 +55,11 @@ var HelloForm = React.createClass({
         </div>;
     },
     getInitialState: function () {
-        return {goodsList: [], myOrder: {items:[]}}
+        return {goodsList: [], myOrder: {items: []}}
 
     }
-})
+});
+
 var ChooseForm = React.createClass({
     getInitialState: function () {
         return {name: null}
@@ -73,7 +74,8 @@ var ChooseForm = React.createClass({
     onLogin: function (login) {
         this.setState({name: login})
     }
-})
+});
+
 ReactDOM.render(
     <ChooseForm />,
     document.getElementById('container')
