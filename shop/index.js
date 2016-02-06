@@ -47,25 +47,42 @@ var HelloForm = React.createClass({
         return <div>
         {'Hello ' + this.props.name + '!'}
             <table>
-        {this.state.goodsList.map(function (item) {
-            return <tr key={item.name} onClick={self.orderItem.bind(self, item)}><td>{item.name}</td><td>{item.price}</td></tr>
-        })}
-                </table>
+                <tbody>
+                {this.state.goodsList.map(function (item) {
+                    return <tr key={item.name} onClick={self.orderItem.bind(self, item)}>
+                        <td>{item.name}</td>
+                        <td>{item.price}</td>
+                    </tr>
+                })}
+                </tbody>
+            </table>
             <hr/>
             <table>
-                <th><td>Name</td><td>Price</td><td>Count</td></th>
-        {this.state.myOrder.items.map(function (item) {
-            return <tr key={item.name} onClick={self.deleteItem.bind(self, item)}><td>{item.name}</td><td>{item.price}</td><td>{item.count}</td></tr>
-        })}
-                </table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>Count</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {this.state.myOrder.items.map(function (item) {
+                    return <tr key={item.name} onClick={self.deleteItem.bind(self, item)}>
+                        <td>{item.name}</td>
+                        <td>{item.price}</td>
+                        <td>{item.count}</td>
+                    </tr>
+                })}
+                </tbody>
+            </table>
             <div>Total Price: {this.state.myOrder.totalPrice}</div>
         </div>;
     },
-    orderItem : function (item) {
+    orderItem: function (item) {
         var self = this;
         var promise = service.addToOrder(item.vendorCode);
-        promise.then(function(result, response){
-            if(result.code != 200){
+        promise.then(function (result, response) {
+            if (result.code != 200) {
                 return
             }
             self.setState({myOrder: result.body});
@@ -75,11 +92,11 @@ var HelloForm = React.createClass({
         return {goodsList: [], myOrder: {items: []}}
 
     },
-    deleteItem : function(item) {
+    deleteItem: function (item) {
         var self = this;
         var promise = service.removeFromOrder(item.vendorCode);
-        promise.then(function(result, response){
-            if(result.code != 200){
+        promise.then(function (result, response) {
+            if (result.code != 200) {
                 return
             }
             self.setState({myOrder: result.body});
