@@ -43,19 +43,64 @@ var HelloForm = React.createClass({
 
     },
     render: function () {
+        var self = this;
         return <div>
         {'Hello ' + this.props.name + '!'}
-        {this.state.goodsList.map(function (item) {
-            return <div key={item.name}>{item.name}</div>
-        })}
+            <table>
+                <tbody>
+                {this.state.goodsList.map(function (item) {
+                    return <tr key={item.name} onClick={self.orderItem.bind(self, item)}>
+                        <td>{item.name}</td>
+                        <td>{item.price}</td>
+                    </tr>
+                })}
+                </tbody>
+            </table>
             <hr/>
-        {this.state.myOrder.items.map(function (item) {
-            return <div key={item.name}>{item.name}</div>
-        })}
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>Count</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {this.state.myOrder.items.map(function (item) {
+                    return <tr key={item.name} onClick={self.deleteItem.bind(self, item)}>
+                        <td>{item.name}</td>
+                        <td>{item.price}</td>
+                        <td>{item.count}</td>
+                    </tr>
+                })}
+                </tbody>
+            </table>
+            <div>Total Price: {this.state.myOrder.totalPrice}</div>
         </div>;
+    },
+    orderItem: function (item) {
+        var self = this;
+        var promise = service.addToOrder(item.vendorCode);
+        promise.then(function (result, response) {
+            if (result.code != 200) {
+                return
+            }
+            self.setState({myOrder: result.body});
+        })
     },
     getInitialState: function () {
         return {goodsList: [], myOrder: {items: []}}
+
+    },
+    deleteItem: function (item) {
+        var self = this;
+        var promise = service.removeFromOrder(item.vendorCode);
+        promise.then(function (result, response) {
+            if (result.code != 200) {
+                return
+            }
+            self.setState({myOrder: result.body});
+        })
 
     }
 });
