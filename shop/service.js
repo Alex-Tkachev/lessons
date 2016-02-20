@@ -122,7 +122,7 @@
 
     function serverify(sync, args, resolve, fail) {
         setTimeout(function () {
-            if (0.10 > Math.random()) {
+            if (0.95 > Math.random()) {
                 var message = "Too Many Requests";
                 resolve({code: 429, body: message, headers: {"Retry-After": "1000"}});
                 return;
