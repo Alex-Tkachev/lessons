@@ -1,0 +1,15 @@
+* {
+
+}
+
+input.form-element {
+    background-color: orange;
+}
+
+div :nth-child(2) {
+    background-color: red;
+}
+
+.form-element {
+    background-color: green;
+}

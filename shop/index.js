@@ -4,9 +4,9 @@ var LoginForm = React.createClass({
     },
     render: function () {
         return <div>
-            <input placeholder='login' ref='login' key='login'/>
-            <input placeholder='password' type="password" onChange={this.onPasswordChanged} key='password'/>
-            <button onClick={this.login} key='action'>login</button>
+            <input className="form-element" placeholder='login' ref='login' key='login'/>
+            <input className="form-element" placeholder='password' type="password" onChange={this.onPasswordChanged} key='password'/>
+            <button className="form-element" onClick={this.login} key='action'>login</button>
         </div>;
     },
     login: function () {
