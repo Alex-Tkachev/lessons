@@ -1,3 +1,28 @@
+function repeatCall(call, callBack) {
+    console.log("qwe")
+    call(function (error, response) {
+        if (error != null || response == null) {
+            return callBack(error, response)
+        }
+        if (response.code == 429) {
+            return repeatCall(call, callBack)
+        }
+        callBack(error, response)
+    })
+}
+
+function processCall(call, successCallBack, failCallBack) {
+    repeatCall(call, function (error, response) {
+        if (error != null || response == null) {
+            return failCallBack("There is error here")
+        }
+        if (response.code == 200) {
+            return successCallBack(response.body)
+        }
+        failCallBack(response.body)
+    })
+}
+
 var LoginForm = React.createClass({
     getInitialState: function () {
         return {password: ""}
@@ -12,13 +37,11 @@ var LoginForm = React.createClass({
     login: function () {
         var login = ReactDOM.findDOMNode(this.refs.login).value;
         var self = this;
-        service.login(login, this.state.password, function (error, response) {
-            if (response.code == 200) {
-                self.props.onLogin(login)
-                return
-            }
-
-            alert("Who are you?")
+        var call = service.login.bind(service, login, this.state.password);
+        processCall(call, function () {
+            self.props.onLogin(login)
+        }, function (responseBody) {
+            alert(responseBody)
         })
     },
     onPasswordChanged: function (e) {
