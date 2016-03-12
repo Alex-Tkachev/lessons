@@ -11,8 +11,8 @@ function repeatCall(call, callBack) {
     })
 }
 
-function processCall(call, successCallBack, failCallBack) {
-    repeatCall(call, function (error, response) {
+function processResponse(successCallBack, failCallBack) {
+    return function (error, response) {
         if (error != null || response == null) {
             return failCallBack("There is error here")
         }
@@ -20,7 +20,28 @@ function processCall(call, successCallBack, failCallBack) {
             return successCallBack(response.body)
         }
         failCallBack(response.body)
-    })
+    }
+}
+
+function processCall(call, successCallBack, failCallBack) {
+    failCallBack = failCallBack || alertResponse;
+    repeatCall(call, processResponse(successCallBack, failCallBack))
+}
+
+function processGetPromise(getPromise, successCallBack, failCallBack) {
+    failCallBack = failCallBack || alertResponse;
+    repeatCall(function(callback) {
+        getPromise().then(function (response) {
+            callback(null, response)
+        }).fail(function(err){
+            callback(err, null)
+        })
+    }, processResponse(successCallBack, failCallBack))
+
+}
+
+function alertResponse (responseBody) {
+    alert(responseBody);
 }
 
 var LoginForm = React.createClass({
@@ -40,30 +61,23 @@ var LoginForm = React.createClass({
         var call = service.login.bind(service, login, this.state.password);
         processCall(call, function () {
             self.props.onLogin(login)
-        }, function (responseBody) {
-            alert(responseBody)
         })
     },
     onPasswordChanged: function (e) {
         this.setState({password: e.target.value})
     }
 });
+
 var HelloForm = React.createClass({
     componentDidMount: function () {
         var self = this;
-        service.getGoodsList(function (jsError, response) {
-            if (jsError != undefined && response.code != 200) {
-                return
-            }
-            self.setState({goodsList: response.body})
-        })
-        service.getMyOrder().then(function (result, response) {
-            if (result.code != 200) {
-                return
-            }
-            self.setState({myOrder: result.body});
-        })
+        processCall(service.getGoodsList.bind(service), function (responseBody) {
+            self.setState({goodsList : responseBody});
+        }, alertResponse);
 
+        processGetPromise(service.getMyOrder.bind(service), function(responseBody){
+            self.setState({myOrder: responseBody})
+        }, alertResponse )
     },
     render: function () {
         var self = this;
@@ -103,28 +117,23 @@ var HelloForm = React.createClass({
     },
     orderItem: function (item) {
         var self = this;
-        var promise = service.addToOrder(item.vendorCode);
-        promise.then(function (result, response) {
-            if (result.code != 200) {
-                return
-            }
-            self.setState({myOrder: result.body});
-        })
+        processGetPromise(service.addToOrder.bind(service, item.vendorCode),
+            this.updateStateField.bind(this, "myOrder"))
     },
     getInitialState: function () {
         return {goodsList: [], myOrder: {items: []}}
 
     },
+    updateStateField: function(field, newValue){
+        var newState = {};
+        newState[field] = newValue;
+        this.setState(newState);
+    },
     deleteItem: function (item) {
         var self = this;
-        var promise = service.removeFromOrder(item.vendorCode);
-        promise.then(function (result, response) {
-            if (result.code != 200) {
-                return
-            }
-            self.setState({myOrder: result.body});
-        })
-
+        processGetPromise(service.removeFromOrder.bind(service, item.vendorCode), function(responseBody){
+            self.setState({myOrder: responseBody});
+        },alertResponse);
     }
 });
 
