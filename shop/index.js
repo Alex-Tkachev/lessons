@@ -1,5 +1,4 @@
 function repeatCall(call, callBack) {
-    console.log("qwe")
     call(function (error, response) {
         if (error != null || response == null) {
             return callBack(error, response)
@@ -28,17 +27,25 @@ function processCall(call, successCallBack, failCallBack) {
     repeatCall(call, processResponse(successCallBack, failCallBack))
 }
 
-function processGetPromise(getPromise, successCallBack, failCallBack) {
-    failCallBack = failCallBack || alertResponse;
-    repeatCall(function(callback) {
-        getPromise().then(function (response) {
-            callback(null, response)
-        }).fail(function(err){
-            callback(err, null)
-        })
-    }, processResponse(successCallBack, failCallBack))
 
+
+
+function repeat(call){
+    return call().then(function (response) {
+        return response.code == 429 ? repeat(call) : response
+    });
 }
+
+function getFinalPromise(getPromise){
+    return repeat(getPromise).then(function(response) {
+        if (response.code == 200) {
+            return response.body
+        }
+        throw response.body;
+    });
+}
+
+
 
 function alertResponse (responseBody) {
     alert(responseBody);
@@ -75,9 +82,9 @@ var HelloForm = React.createClass({
             self.setState({goodsList : responseBody});
         }, alertResponse);
 
-        processGetPromise(service.getMyOrder.bind(service), function(responseBody){
+        getFinalPromise(service.getMyOrder.bind(service)).then(function(responseBody){
             self.setState({myOrder: responseBody})
-        }, alertResponse )
+        }, alertResponse)
     },
     render: function () {
         var self = this;
@@ -117,8 +124,8 @@ var HelloForm = React.createClass({
     },
     orderItem: function (item) {
         var self = this;
-        processGetPromise(service.addToOrder.bind(service, item.vendorCode),
-            this.updateStateField.bind(this, "myOrder"))
+        getFinalPromise(service.addToOrder.bind(service, "blah" + item.vendorCode))
+            .then(this.updateStateField.bind(this, "myOrder"))
     },
     getInitialState: function () {
         return {goodsList: [], myOrder: {items: []}}
@@ -131,9 +138,9 @@ var HelloForm = React.createClass({
     },
     deleteItem: function (item) {
         var self = this;
-        processGetPromise(service.removeFromOrder.bind(service, item.vendorCode), function(responseBody){
+        getFinalPromise(service.removeFromOrder.bind(service, item.vendorCode)).then(function(responseBody){
             self.setState({myOrder: responseBody});
-        },alertResponse);
+        });
     }
 });
 
