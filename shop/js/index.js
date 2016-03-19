@@ -1,3 +1,7 @@
+var React = require('react'),
+    ReactDOM = require('react-dom');
+
+
 function repeatCall(call, callBack) {
     call(function (error, response) {
         if (error != null || response == null) {
