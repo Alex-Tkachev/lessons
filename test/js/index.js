@@ -1,9 +1,10 @@
-var React = require('react');
+var React = require('react'),
+    ReactDOM = require('react-dom');
 
 
 var MainForm = React.createClass({
     render: function () {
-	return <div>Привет</div>
+	return <div>Hello, russian!</div>
     }
 });
 
