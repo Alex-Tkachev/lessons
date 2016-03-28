@@ -3,10 +3,12 @@
 
     var debugTasks = ['browserify:script_web', 'browserify:script_external', 'cssmin:dist', 'htmlmin:dist'],
         productionTasks = debugTasks.concat('uglify:dist');
+    var serverTask = ['connect'];
 
     grunt.registerTask('build-Debug', debugTasks);
     grunt.registerTask('build-Release', productionTasks);
     grunt.registerTask('build-Production', productionTasks);
+    grunt.registerTask('connect', serverTask);
 
     var externalModules = [
         "react",
@@ -104,12 +106,24 @@
                     spawn: false
                 }
             }
+        },
+        connect: {
+        server: {
+            options: {
+                port: 9000,
+                    hostname: 'localhost',
+                    keepalive: true
+            }
         }
-    });
+    }
+
+
+});
 
     grunt.loadNpmTasks("grunt-browserify");
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-contrib-htmlmin');
+    grunt.loadNpmTasks('grunt-contrib-connect');
 };
