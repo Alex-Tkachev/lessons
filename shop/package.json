@@ -1,0 +1,36 @@
+{
+  "author": "iAmIT students <AATkachev@gmail.com>",
+  "name": "iAmIt-Lessons",
+  "version": "0.0.1",
+  "preferGlobal": false,
+  "private": true,
+  "devDependencies": {
+    "babel-preset-es2015": "6.3.13",
+    "babel-preset-react": "6.3.13",
+    "babel-preset-stage-0": "6.3.13",
+    "babelify": "7.2.0",
+    "grunt": "0.4.5",
+    "grunt-babel": "6.0.0",
+    "grunt-browserify": "4.0.1",
+    "grunt-cli": "0.1.13",
+    "grunt-contrib-clean": "0.7.0",
+    "grunt-contrib-copy": "0.8.2",
+    "grunt-contrib-cssmin": "0.14.0",
+    "grunt-contrib-htmlmin": "0.6.0",
+    "grunt-contrib-imagemin": "1.0.0",
+    "grunt-contrib-sass": "0.9.2",
+    "grunt-contrib-uglify": "0.11.0",
+    "grunt-contrib-watch": "0.6.1",
+    "grunt-sass": "1.1.0",
+    "grunt-text-replace": "0.4.0",
+    "node-sass": "3.4.2"
+  },
+  "dependencies": {
+    "react": "0.14.5",
+    "react-dom": "0.14.5"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Alex-Tkachev/lessons"
+  }
+}
