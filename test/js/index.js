@@ -1,14 +1,15 @@
 var React = require('react'),
     ReactDOM = require('react-dom'),
+    { TaskList } = require('./taskList'),
+    { TaskText } = require('./taskText'),
     { tasks } = require('./tasks');
 
    
 var MainForm = React.createClass({
     render: function () {
         return <div>
-            {tasks.map(function (task, i) {
-                return <div key={"task"+i}>{task.name}</div> 
-            })}
+            <TaskList/>
+            <TaskText text = {tasks[0].text}/>
         </div>
     }
 });
