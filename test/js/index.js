@@ -1,10 +1,16 @@
 var React = require('react'),
-    ReactDOM = require('react-dom');
+    ReactDOM = require('react-dom'),
+    { TaskList } = require('./taskList'),
+    { TaskText } = require('./taskText'),
+    { tasks } = require('./tasks');
 
-
+   
 var MainForm = React.createClass({
     render: function () {
-	return <div>Hello, russian!</div>
+        return <div>
+            <TaskList/>
+            <TaskText text = {tasks[0].text}/>
+        </div>
     }
 });
 
