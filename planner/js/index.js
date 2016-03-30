@@ -15,6 +15,9 @@ var MainForm = React.createClass({
     onSubmit: function(){
         this.setState({mainView: true});
     },
+    comeBack: function() {
+        this.setState({mainView: true});
+    },
     render: function () {
         var view;
         if(this.state.mainView){
@@ -23,7 +26,7 @@ var MainForm = React.createClass({
                 </div>;
         }
         else{
-            view = <AddNewTask onSubmit={this.onSubmit}/>;
+            view = <AddNewTask onSubmit={this.onSubmit} comeBack={this.comeBack}/>;
         } 
             
         return <div>
