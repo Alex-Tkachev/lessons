@@ -3,12 +3,11 @@ var React = require('react'),
     {parseString} = require('./parseString');
 
 
-
 var TaskText = React.createClass({
     render: function () {
         var text = parseString(this.props.text);
-        return <div>
-            <div>{text}</div>
+        return <div className="task-text">
+            {text}
         </div>
     }
 });
