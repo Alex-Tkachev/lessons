@@ -13,7 +13,7 @@ var MainForm = React.createClass({
       this.setState({text: newText})
     },
     render: function () {
-        return <div>
+        return <div className="page-root">
             <TaskList changeText={this.setNewText}/>
             <TaskText text={this.state.text}/>
         </div>
