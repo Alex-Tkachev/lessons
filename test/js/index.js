@@ -4,12 +4,18 @@ var React = require('react'),
     { TaskText } = require('./taskText'),
     { tasks } = require('./tasks');
 
-   
+
 var MainForm = React.createClass({
+    getInitialState: function() {
+        return {text: 'abracadabra'};
+    },
+    setNewText: function(newText) {
+      this.setState({text: newText})
+    },
     render: function () {
         return <div>
-            <TaskList/>
-            <TaskText text = {tasks[0].text}/>
+            <TaskList changeText={this.setNewText}/>
+            <TaskText text={this.state.text}/>
         </div>
     }
 });
