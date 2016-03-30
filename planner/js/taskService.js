@@ -2,7 +2,6 @@ class TaskService {
     constructor() {
         console.log("constructor");
         this._setTasks();
-        this.deleteTask(this._tasks[1]);
     }
 
     _setTasks() {
