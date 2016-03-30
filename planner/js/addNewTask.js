@@ -4,6 +4,10 @@ var React = require('react'),
 var Calendar = require('react-input-calendar');
 
 var AddNewTask = React.createClass({
+    getInitialState() {
+        this.date = new Date("1/1/2016");
+        return {date: this.date}
+    },
     addTask: function () {
         var text = ReactDOM.findDOMNode(this.refs.text).value;
         this.saveToStorage(text, this.date);
@@ -14,25 +18,25 @@ var AddNewTask = React.createClass({
             <input className="form-element" placeholder='Type task' ref='text'/>
             <Calendar
                 format="DD/MM/YYYY"
-                date="1-1-2016"
                 onChange={this.onSetDate}
+                date={this.state.date}
             />
             <br/>
             <button className="form-element" onClick={this.addTask}>Add</button>
             <button className="form-element" onClick={this.back}>Back</button>
         </div>
     },
-    onSetDate: function(date){
+    onSetDate: function (date) {
         this.date = new Date(date);
-
     },
-    back: function(){
+    back: function () {
         this.props.comeBack();
     },
-    saveToStorage: function(text, date){
-        var newTask = {text : text, date : date};
+    saveToStorage: function (text, date) {
+        var newTask = {text: text, date: date};
         taskService.addTask(newTask);
     }
+
 });
 
 module.exports = {

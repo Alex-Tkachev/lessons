@@ -5,6 +5,7 @@ input{
 }
 button {
     box-shadow: 2px 2px;
+}
 .input-calendar {
     font-family: 'Pontano Sans', sans-serif;
     position: relative;
