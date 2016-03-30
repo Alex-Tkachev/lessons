@@ -13,7 +13,6 @@ var AddNewTask = React.createClass({
         this.props.onSubmit();
     },
     render: function () {
-        console.log(taskService.tasks);
         return <div>
             <input className="form-element" placeholder='Type task' ref='text'/>
             <input className="form-element" placeholder='Type date' ref='date'/>
@@ -21,11 +20,6 @@ var AddNewTask = React.createClass({
         </div>
     },
     saveToStorage: function(text, date){
-        /*var oldTasks = JSON.parse(localStorage.getItem("tasks"));
-        if(oldTasks == null){
-            oldTasks = [];
-        }*/
-
         var newTask = {text : text, date : date};
         taskService.addTask(newTask);
     }

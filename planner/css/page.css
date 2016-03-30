@@ -1,0 +1,8 @@
+input{
+    text-align: center;
+    background: lightgrey;
+    color: gray;
+}
+button {
+    box-shadow: 2px 2px;
+}
