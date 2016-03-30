@@ -6,7 +6,11 @@ class TaskService {
     }
 
     _setTasks() {
-        var oldTasks = JSON.parse(localStorage.getItem("tasks"));
+        var oldTasks = JSON.parse(localStorage.getItem("tasks")).map(item =>{
+            item.date = new Date(item.date);
+            return item;
+        });
+        
         if (oldTasks == null) {
             oldTasks = [];
             this.nextID = 0;
@@ -15,7 +19,6 @@ class TaskService {
             this.nextID = oldTasks[oldTasks.length - 1].id + 1;
         }
         this._tasks = oldTasks;
-        //console.log(oldTasks);
     }
 
     get tasks() {

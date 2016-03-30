@@ -15,7 +15,7 @@ var YourTasks = React.createClass({
                 <tbody>
                 {taskService.tasks.map(function (item, index) {
                     return <tr key={index}>
-                        <td>{item.name}</td>
+                        <td>{item.text}</td>
                         <td>{(item.date.getMonth() + 1) + "/" + item.date.getDate() + "/" + item.date.getFullYear()}</td>
                     </tr>
                 })}
