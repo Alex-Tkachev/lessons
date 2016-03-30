@@ -12,7 +12,8 @@
 
     var externalModules = [
         "react",
-        "react-dom"
+        "react-dom",
+        "request-promise"
     ];
 
     var buildTargetDirectory = 'dist/';
