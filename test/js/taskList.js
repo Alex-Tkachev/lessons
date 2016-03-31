@@ -1,15 +1,26 @@
 var React = require('react'),
-    {tasks} = require('./tasks');
+    {getTasks, getTask} = require('./tasks');
+
 
 var TaskList = React.createClass({
-    showText: function (text) {
-        this.props.changeText(text);
+    getInitialState: function () {
+        var self = this;
+        getTasks().then(function (taskNames) {
+            self.setState({tasks: taskNames})
+        });
+        return {tasks: []};
+    },
+    showText: function (taskName) {
+        var self = this;
+        getTask(taskName).then(function (task) {
+            self.props.changeText(task);
+        })
     },
     render: function () {
         var self = this;
         return <div className="task-list">
-            {tasks.map(function (task, i) {
-                return <div className="task" onClick={self.showText.bind(self, task.text)} key={"task"+i}>{task.name}</div>
+            {this.state.tasks.map(function (task, i) {
+                return <div className="task" onClick={self.showText.bind(self, task)} key={task}>{task}</div>
             })}
         </div>
     }

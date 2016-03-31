@@ -7,7 +7,7 @@ var React = require('react'),
 
 var MainForm = React.createClass({
     getInitialState: function() {
-        return {text: 'abracadabra'};
+        return {text: ""};
     },
     setNewText: function(newText) {
       this.setState({text: newText})
