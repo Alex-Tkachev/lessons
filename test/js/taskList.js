@@ -10,9 +10,10 @@ var TaskList = React.createClass({
         });
         return {tasks: []};
     },
-    showText: function (taskName) {
+    showText: function (taskName, i) {
         var self = this;
         getTask(taskName).then(function (task) {
+            self.setState({selectedIndex: i})
             self.props.changeText(task);
         })
     },
@@ -20,7 +21,7 @@ var TaskList = React.createClass({
         var self = this;
         return <div className="task-list">
             {this.state.tasks.map(function (task, i) {
-                return <div className="task" onClick={self.showText.bind(self, task)} key={task}>{task}</div>
+                return <div className={"task" + ((i == self.state.selectedIndex) ? " selected": "")} onClick={self.showText.bind(self, task, i)} key={task}>{task}</div>
             })}
         </div>
     }
