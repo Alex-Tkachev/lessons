@@ -10,18 +10,18 @@ var TaskList = React.createClass({
         });
         return {tasks: []};
     },
-    showText: function (taskName, i) {
+    showText: function (task) {
         var self = this;
-        getTask(taskName).then(function (task) {
-            self.setState({selectedIndex: i})
-            self.props.changeText(task);
+        getTask(task.taskFile).then(function (taskText) {
+            self.props.changeText(taskText, task.lessonFile);
         })
     },
     render: function () {
         var self = this;
         return <div className="task-list">
             {this.state.tasks.map(function (task, i) {
-                return <div className={"task" + ((i == self.state.selectedIndex) ? " selected": "")} onClick={self.showText.bind(self, task, i)} key={task}>{task}</div>
+                return <div className={"task" + ((i == self.state.selectedIndex) ? " selected": "")}
+                            onClick={self.showText.bind(self, task)} key={task.lessonFile}>{task.name}</div>
             })}
         </div>
     }
