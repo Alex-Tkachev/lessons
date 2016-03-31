@@ -1,3 +1,28 @@
-input{
-    width: 10px;
+input {
+    width: 15px;
+}
+
+.name {
+    border-bottom: 2px solid black;
+}
+
+.selected {
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+.task-list {
+    border-right: 2px solid BLACK;
+    padding-right: 10px;
+    direction: ltr;
+    font-family: "Verdana", serif;
+    float: left;
+    footer
+    font-size: 15px;
+    line-height: 170%;
+}
+
+.task-text {
+    text-indent: 25px;
+    float: right;
 }
