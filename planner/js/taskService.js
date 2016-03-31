@@ -47,6 +47,15 @@ class TaskService {
         }
     }
 
+    deleteTaskById(id) {
+        var index = this._tasks.map(task => task.id).indexOf(id);
+        if (index != -1) {
+            this._tasks.splice(index, 1);
+            var newTasks = JSON.stringify(this._tasks);
+            localStorage.setItem("tasks", newTasks);
+        }
+    }
+
     get sortedTasks (){
         var arr = this._tasks.slice();
         arr = arr.sort(function(a, b){
@@ -64,8 +73,6 @@ class TaskService {
             localStorage.setItem("tasks", newTasks);
         }
     }
-
-
 }
 
 module.exports = {

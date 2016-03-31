@@ -22,6 +22,7 @@ var MainForm = React.createClass({
         var view;
         if(this.state.mainView){
             view =<div> <YourTasks />
+                <br />
                 <button className="form-element" onClick={this.viewAddTasks}>Add Task</button>
                 </div>;
         }
@@ -31,7 +32,6 @@ var MainForm = React.createClass({
             
         return <div>
             {view}
-
         </div>
     }
 });
