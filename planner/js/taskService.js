@@ -6,7 +6,7 @@ class TaskService {
 
     _setTasks() {
         var oldTasks = JSON.parse(localStorage.getItem("tasks"));
-        if (oldTasks == null) {
+        if (oldTasks == null || oldTasks.length == 0) {
             oldTasks = [];
             this.nextID = 0;
         } else {

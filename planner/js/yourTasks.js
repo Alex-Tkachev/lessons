@@ -4,6 +4,7 @@ var React = require('react'),
 
 var YourTasks = React.createClass({
     render: function (){
+        var self = this;
         return <div>
             <table>
                 <thead>
@@ -17,12 +18,19 @@ var YourTasks = React.createClass({
                     return <tr key={index}>
                         <td>{item.text}</td>
                         <td>{(item.date.getMonth() + 1) + "/" + item.date.getDate() + "/" + item.date.getFullYear()}</td>
+                        <td><button className="form-element" onClick={self.deleteTask.bind(self, item)}>Delete</button> </td>
                     </tr>
                 })}
                 </tbody>
             </table>
         </div>;
+    },
+    deleteTask: function(task){
+        taskService.deleteTask(task);
+        this.forceUpdate();
     }
+    
+
 
 
 });
