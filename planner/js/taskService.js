@@ -1,3 +1,6 @@
+var React = require('react'),
+    {StateType} = require('./stateType');
+
 class TaskService {
     constructor() {
         this._setTasks();
@@ -26,6 +29,7 @@ class TaskService {
     }
 
     addTask(newTask) {
+        newTask.state = StateType.CREATED;
         newTask.id = this.nextID;
         this.nextID += 1;
         this._tasks.push(newTask);
@@ -50,6 +54,15 @@ class TaskService {
         });
         return arr;
 
+    }
+
+    changeStateInProgress (task){
+        var index = this._tasks.indexOf(task);
+        if (index != -1) {
+            this._tasks[index].state = StateType.IN_PROGRESS;
+            var newTasks = JSON.stringify(this._tasks);
+            localStorage.setItem("tasks", newTasks);
+        }
     }
 
 
