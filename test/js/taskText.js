@@ -21,7 +21,9 @@ var TaskText = React.createClass({
         this.state.refs = children.refs;
 
         return <div className="task-text">
-            {children.result}
+            <div>
+                {children.result}
+            </div>
             <button className="butt" onClick={this.checkAnswers} key='check'>Check</button>
         </div>
     }

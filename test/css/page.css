@@ -25,3 +25,11 @@ input {
     text-indent: 25px;
     float: right;
 }
+.task{
+    white-space: nowrap;
+}
+
+button {
+    margin-left: calc(50% - 75px);
+    width: 150px;
+}
