@@ -1,8 +1,5 @@
 var React = require('react'),
-    {tasks} = require('./tasks'),
-    {TaskList} = require('./parseString'),
-    {parseString} = require('./parseString'),
-    {ChoiseBox} = require('./parseString');
+    {parseString} = require('./parseString');
 
 
 var TaskText = React.createClass({
@@ -22,18 +19,6 @@ var TaskText = React.createClass({
 
         var children = parseString(this.props.text);
         this.state.refs = children.refs;
-        //this.refNames = children.refs;
-        //var r = refs[0];
-        //this.refs[r];
-        // var ans = 0;
-        // var j = 1;
-        // for (var i = 0; i < re.length; i++) {
-        //     if (re[i] != children[j].) {
-        //         ans+=1;
-        //     }
-        //     j += 2;
-        // }
-        //
 
         return <div className="task-text">
             {children.result}
