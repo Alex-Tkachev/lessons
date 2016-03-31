@@ -1,4 +1,5 @@
 var React = require('react');
+var ReactDOM = require('react-dom');
 
 /* var str = "Пример текста в который нужно встав{и}ть пропуски. Зайчик бежал по полянке." +
  " И п{а}л в ямку. И {з}десь его ждал {б}обр, чтобы зак{о}пать." +
@@ -6,22 +7,27 @@ var React = require('react');
  */
 
 var ChoiseBox = React.createClass({
+    isValid: function () {
+        return ReactDOM.findDOMNode(this.refs.inp).value == this.props.correctAnswer;
+    },
     render: function () {
-        return <input placeholder={this.props.correctAnswer}/>
+        return <input ref="inp"/>
     }
 });
 
 function parseString(str) {
-    str = str.replace(/{{/g, '{')
-    str = str.replace(/}}/g, '}')
+    str = str.replace(/{{/g, '{');
+    str = str.replace(/}}/g, '}');
     var result = [];
     var i;
     var currentStr = '';
     var isInput = false;
+    var refs = [];
 
     function addCurrentStr(isNewInput) {
         if (isInput == true) {
-            result.push(<ChoiseBox key={'box'+i} correctAnswer={currentStr}/>);
+            result.push(<ChoiseBox ref={"box"+i} correctAnswer={currentStr}/>);
+            refs.push("box" + i);
         }
         else {
             result.push(currentStr);
@@ -29,8 +35,9 @@ function parseString(str) {
         isInput = isNewInput;
         currentStr = '';
     }
-
+console.log(str);
     for (i = 0; i < str.length; i++) {
+
         var c = str[i];
         if (c == '{') {
             addCurrentStr(true);
@@ -43,9 +50,11 @@ function parseString(str) {
     }
     addCurrentStr(false);
 
-    return result;
+
+    return {refs: refs, result : result};
 }
 
 module.exports = {
-    parseString: parseString
+    parseString: parseString,
+    ChoiseBox : ChoiseBox
 };
