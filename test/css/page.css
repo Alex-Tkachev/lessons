@@ -33,3 +33,7 @@ button {
     margin-left: calc(50% - 75px);
     width: 150px;
 }
+
+.lighted{
+    border-color: red;
+}

@@ -13,7 +13,6 @@ var TaskText = React.createClass({
               count++;
           }
         }
-         alert('Количество ваших ошибок: ' + count);
     },
     render: function () {
 
