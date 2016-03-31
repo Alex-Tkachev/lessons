@@ -176,3 +176,13 @@ div.circle{
     border-radius: 50%;
     background: yellow;
 }
+
+div.circleInProgress{
+    height: 100px;
+    width: 100px;
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+    border-radius: 50%;
+    background: red;
+}

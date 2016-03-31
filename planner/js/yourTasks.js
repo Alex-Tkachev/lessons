@@ -1,32 +1,37 @@
 var React = require('react'),
     ReactDOM = require('react-dom'),
-    {taskService} = require('./taskService');
+    {taskService} = require('./taskService'),
+{StateType} = require('./stateType');
 
 var YourTasks = React.createClass({
-    render: function (){
+    render: function () {
         var self = this;
         return <div>
             <table>
                 <tbody>
-                {taskService.sortedTasks.map(function (item, index){
+                {taskService.sortedTasks.map(function (item, index) {
                     return <tr key={index}>
-                        <td><div className="circle">{item.text}</div></td>
-                            <td><button className="form-element" onClick={self.deleteTask.bind(self, item)}>Delete</button> </td>
+                        <td>
+                            <div className={self.setClassName(item)}>{item.text}</div>
+                        </td>
+                        <td>
+                            <button className="form-element" onClick={self.deleteTask.bind(self, item)}>Delete</button>
+                        </td>
                     </tr>
                 })}
                 </tbody>
             </table>
         </div>;
     },
-    deleteTask: function(task){
+    deleteTask: function (task) {
         taskService.deleteTask(task);
         this.forceUpdate();
+    },
+    setClassName: function (task) {
+        return task.state == StateType.CREATED ? "circle" : "circleInProgress";
     }
-    
-
-
-
 });
+
 module.exports = {
     YourTasks: YourTasks
 }
