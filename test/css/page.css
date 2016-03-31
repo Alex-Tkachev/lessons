@@ -1,3 +1,42 @@
-input{
-    width: 10px;
+input {
+    width: 15px;
+}
+
+.name {
+    border-bottom: 2px solid black;
+}
+
+.task-list::first-line {
+    font-size: 4em;
+    text-shadow: 3px 3px 10px red, -3px -3px 10px yellow;
+    color: #101920;
+    position: fixed;
+    border-right: 2px solid BLACK;
+    padding-right: 10px;
+    direction: ltr;
+    font-family: "Verdana", serif;
+    font-weight: bold;;
+    position: absolute;
+    font-size: 15px;
+    line-height: 170%;
+}
+
+.task-list {
+
+    position: fixed;
+    border-right: 2px solid BLACK;
+    padding-right: 10px;
+    direction: ltr;
+    font-family: "Verdana", serif;
+    font-weight: bold;;
+    position: absolute;
+    font-size: 15px;
+    line-height: 170%;
+}
+
+.task-text {
+    text-indent: 25px;
+    margin-left: 100px;
+    position: absolute;
+    float: right;
 }
