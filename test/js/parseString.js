@@ -7,11 +7,17 @@ var ReactDOM = require('react-dom');
  */
 
 var ChoiseBox = React.createClass({
+    getInitialState : function () {
+        return {value : ''}
+    },
     isValid: function () {
         return ReactDOM.findDOMNode(this.refs.inp).value == this.props.correctAnswer;
     },
     render: function () {
-        return <input ref="inp"/>
+        return <input value={this.state.value} onKeyPress={this.handleChange} ref="inp"/>
+    },
+    handleChange : function (event) {
+        this.setState({value : String.fromCharCode(event.which)});
     }
 });
 
@@ -26,7 +32,7 @@ function parseString(str) {
 
     function addCurrentStr(isNewInput) {
         if (isInput == true) {
-            result.push(<ChoiseBox ref={"box"+i} correctAnswer={currentStr}/>);
+            result.push(<ChoiseBox ref={"box"+i} key={"box" + i} correctAnswer={currentStr}/>);
             refs.push("box" + i);
         }
         else {
