@@ -1,6 +1,5 @@
 class TaskService {
     constructor() {
-        console.log("constructor");
         this._setTasks();
     }
 
