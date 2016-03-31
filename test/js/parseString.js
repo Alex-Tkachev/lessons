@@ -35,7 +35,6 @@ function parseString(str) {
         isInput = isNewInput;
         currentStr = '';
     }
-console.log(str);
     for (i = 0; i < str.length; i++) {
 
         var c = str[i];
