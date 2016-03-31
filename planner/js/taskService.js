@@ -1,12 +1,11 @@
 class TaskService {
     constructor() {
-        console.log("constructor");
         this._setTasks();
     }
 
     _setTasks() {
         var oldTasks = JSON.parse(localStorage.getItem("tasks"));
-        if (oldTasks == null) {
+        if (oldTasks == null || oldTasks.length == 0) {
             oldTasks = [];
             this.nextID = 0;
         } else {
@@ -42,6 +41,15 @@ class TaskService {
             var newTasks = JSON.stringify(this._tasks);
             localStorage.setItem("tasks", newTasks);
         }
+    }
+
+    get sortedTasks (){
+        var arr = this._tasks.slice();
+        arr = arr.sort(function(a, b){
+            return a.date.getTime() > b.date.getTime();
+        });
+        return arr;
+
     }
 
 
