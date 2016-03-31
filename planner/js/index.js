@@ -2,7 +2,8 @@ var React = require('react'),
     ReactDOM = require('react-dom'),
     {AddNewTask} = require('./addNewTask'),
     {YourTasks} = require('./yourTasks'),
-    {taskService} = require('./taskService');
+    {taskService} = require('./taskService'),
+    {Grid, Row, Col, Well, Button} = require('react-bootstrap');
 
 
 var MainForm = React.createClass({
@@ -12,27 +13,33 @@ var MainForm = React.createClass({
     viewAddTasks: function () {
         this.setState({mainView: false});
     },
-    onSubmit: function(){
+    onSubmit: function () {
         this.setState({mainView: true});
     },
-    comeBack: function() {
+    comeBack: function () {
         this.setState({mainView: true});
     },
     render: function () {
         var view;
-        if(this.state.mainView){
-            view =<div> <YourTasks />
+        if (this.state.mainView) {
+            view = <div><YourTasks />
                 <br />
-                <button className="form-element" onClick={this.viewAddTasks}>Add Task</button>
-                </div>;
+                <Button onClick={this.viewAddTasks}>Add Task</Button>
+            </div>;
         }
-        else{
+        else {
             view = <AddNewTask onSubmit={this.onSubmit} comeBack={this.comeBack}/>;
-        } 
-            
-        return <div>
-            {view}
-        </div>
+        }
+
+        return <Grid>
+            <Row>
+                <Col xs={5}>
+                    <Well>
+                        {view}
+                    </Well>
+                </Col>
+            </Row>
+        </Grid>
     }
 });
 

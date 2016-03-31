@@ -1,27 +1,34 @@
 var React = require('react'),
-    ReactDOM = require('react-dom'),
     {taskService} = require('./taskService'),
-    {StateType} = require('./stateType');
+    {StateType} = require('./stateType'),
+    {Row, Col} = require('react-bootstrap');
 
 var YourTasks = React.createClass({
     render: function () {
-        var self = this;
+        var tasks = taskService.sortedTasks;
+        var tasksView = [];
+        var colSize = 3;
+        for (var i = 0; i < tasks.length; i = i + colSize) {
+            var row = [];
+            for (var j = 0; (j < colSize) && (i + j < tasks.length); j++) {
+                var index = i + j;
+                const task = tasks[index];
+                var col = <Col xs={4} key={index}>
+                    <div draggable="true" className={this.setClassName(task)}
+                         onDragStart={(event) => this.drag(event, task)}
+                         onClick={() => this.startWork(task)}>{task.text}</div>
+                </Col>;
+                row.push(col);
+            }
+
+            var rowView = <Row key={i + '_row'} className="top-buffer">{row}</Row>;
+            tasksView.push(rowView);
+        }
+
         return <div>
-            <table>
-                <tbody>
-                {taskService.sortedTasks.map(function (item, index) {
-                    return <tr key={index}>
-                        <td>
-                            <div draggable="true" className={self.setClassName(item)}
-                                 onDragStart={(event) => self.drag(event, item)}
-                                 onClick={self.startWork.bind(self, item)}>{item.text}</div>
-                        </td>
-                    </tr>
-                })}
-                </tbody>
-            </table>
+            {tasksView}
             <br />
-            <img onDrop={this.drop} onDragOver={this.allowDrop} src="/images/trash.png"/>
+            <img onDrop={this.drop} onDragOver={this.allowDrop} src="/images/trash.png" width="40px"/>
         </div>;
     },
     deleteTask: function (id) {
