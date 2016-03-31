@@ -9,8 +9,8 @@ var MainForm = React.createClass({
     getInitialState: function () {
         return {text: ""};
     },
-    setNewText: function (newText) {
-        this.setState({text: newText})
+    setNewText: function(newText, lessonFile) {
+      this.setState({text: newText, lessonFile: lessonFile})
     },
     render: function () {
         return <table className="page-root">

@@ -1,2 +1,2 @@
-Example1
-Example2
+{"name": "Урок 1", "lessonFile": "Lesson1", "taskFile": "Example1"}
+{"name": "Урок 2", "lessonFile": "Lesson2", "taskFile": "Example2"}
