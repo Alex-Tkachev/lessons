@@ -44,6 +44,15 @@ class TaskService {
         }
     }
 
+    get sortedTasks (){
+        var arr = this._tasks.slice();
+        arr = arr.sort(function(a, b){
+            return a.date.getTime() > b.date.getTime();
+        });
+        return arr;
+
+    }
+
 
 }
 

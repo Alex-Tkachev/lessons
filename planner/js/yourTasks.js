@@ -13,7 +13,7 @@ var YourTasks = React.createClass({
                 </tr>
                 </thead>
                 <tbody>
-                {taskService.tasks.map(function (item, index) {
+                {taskService.sortedTasks.map(function (item, index) {
                     return <tr key={index}>
                         <td>{item.text}</td>
                         <td>{(item.date.getMonth() + 1) + "/" + item.date.getDate() + "/" + item.date.getFullYear()}</td>
