@@ -8,16 +8,20 @@ var ReactDOM = require('react-dom');
 
 var ChoiseBox = React.createClass({
     getInitialState : function () {
-        return {value : ''}
+        return {value : '', className : ''}
     },
     isValid: function () {
-        return ReactDOM.findDOMNode(this.refs.inp).value == this.props.correctAnswer;
+        var bol = ReactDOM.findDOMNode(this.refs.inp).value == this.props.correctAnswer;
+         if(!bol) {
+             this.setState({className : 'lighted'});
+         }
+        return bol;
     },
     render: function () {
-        return <input value={this.state.value} onKeyPress={this.handleChange} ref="inp"/>
+        return <input value={this.state.value} className={this.state.className} onKeyPress={this.handleChange} ref="inp"/>
     },
     handleChange : function (event) {
-        this.setState({value : String.fromCharCode(event.which)});
+        this.setState({value : String.fromCharCode(event.which), className : ''});
     }
 });
 
