@@ -1,8 +1,10 @@
 var React = require('react'),
     ReactDOM = require('react-dom'),
     {TaskList} = require('./taskList'),
-    {TaskText} = require('./taskText'),
-    {tasks} = require('./tasks');
+    
+    {tasks} = require('./tasks'),
+    {Task} = require('./task'),
+    {TaskLesson} = require('./taskLesson');
 
 
 var MainForm = React.createClass({
@@ -14,10 +16,12 @@ var MainForm = React.createClass({
     },
     render: function () {
         return <table className="page-root">
+            <tbody>
             <tr>
                 <td><TaskList changeText={this.setNewText}/></td>
-                <td><TaskText text={this.state.text}/></td>
+                <td><Task text={this.state.text}/></td>
             </tr>
+            </tbody>
         </table>
     }
 });
