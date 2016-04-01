@@ -16,8 +16,8 @@ var Task = React.createClass({
         if(this.props.task == null) {
             return <div>Выберите урок</div>
         }
-        return <div>
-            <table>
+        return <div className="tableDiv">
+            <table className="lessonTable">
                 <tbody>
                 <tr>
                     <td>

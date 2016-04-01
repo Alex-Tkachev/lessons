@@ -20,7 +20,7 @@ var TaskText = React.createClass({
         this.state.refs = children.refs;
 
         return <div className="task-text">
-            <div>
+            <div className="text">
                 {children.result}
             </div>
             <button className="butt" onClick={this.checkAnswers} key='check'>Check</button>

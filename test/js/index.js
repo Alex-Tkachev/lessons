@@ -18,7 +18,7 @@ var MainForm = React.createClass({
         return <table className="page-root">
             <tbody>
             <tr>
-                <td><TaskList changeText={this.setNewText}/></td>
+                <td className="tdList"><TaskList changeText={this.setNewText}/></td>
                 <td><Task task={this.state.task}/></td>
             </tr>
             </tbody>

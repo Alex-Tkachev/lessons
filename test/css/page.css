@@ -10,6 +10,10 @@ input {
     text-decoration: underline;
     font-weight: bold;
 }
+.tdList {
+    width: 1%;
+    vertical-align: top;
+}
 
 .task-list {
     border-right: 2px solid BLACK;
@@ -19,6 +23,12 @@ input {
     float: left;
     font-size: 15px;
     line-height: 170%;
+}
+.lessonTable{
+    width: 100%;
+}
+.tableDiv {
+    width : 100%;
 }
 
 .task-text {
@@ -31,13 +41,14 @@ input {
 
 }
 
+.text {
+    padding: 20px;
+}
+
 .butt {
     margin-left: calc(50% - 75px);
-    width: 150px;
-    background-color: #008080;
+    width: 100px;
     border: none;
-    color: orange;
-    padding: 15px 32px;
     text-align: center;
     cursor: pointer;
     font-size : 20px;
