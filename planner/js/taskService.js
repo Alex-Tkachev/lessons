@@ -73,6 +73,16 @@ class TaskService {
             localStorage.setItem("tasks", newTasks);
         }
     }
+    severalFirstSortedTasks (number){
+        var arr = this._tasks.slice();
+        arr = arr.sort(function(a, b){
+            return a.date.getTime() > b.date.getTime();
+        });
+        arr =  arr.slice(0, number);
+        return arr;
+
+    }
+
 }
 
 module.exports = {

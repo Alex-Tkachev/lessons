@@ -4,6 +4,8 @@ var StateType = {
     DELETED : 2
 };
 
+
 module.exports = {
     StateType: StateType
 };
+
