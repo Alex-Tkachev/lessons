@@ -9,6 +9,7 @@ var AddNewTask = React.createClass({
         this.date = new Date("1/1/2016");
         return {date: this.date}
     },
+     
     addTask: function () {
         var text = this.refs.text.getInputDOMNode().value;
         this.saveToStorage(text, this.date);

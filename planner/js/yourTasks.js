@@ -14,7 +14,7 @@ var YourTasks = React.createClass({
                 var index = i + j;
                 const task = tasks[index];
                 var col = <Col xs={4} key={index}>
-                    <div draggable="true" className={this.setClassName(task)}
+                    <div title={task.text} draggable="true" className={this.setClassName(task)}
                          onDragStart={(event) => this.drag(event, task)}
                          onClick={() => this.startWork(task)}>{task.text}</div>
                 </Col>;
