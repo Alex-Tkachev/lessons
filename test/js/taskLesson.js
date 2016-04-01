@@ -1,8 +1,8 @@
 var React = require('react');
-
+import Iframe from 'react-iframe';
 var TaskLesson = React.createClass({
     render: function () {
-        return <div>Урок</div>
+        return <Iframe url="http://tut.by/" />
     }
 });
 
