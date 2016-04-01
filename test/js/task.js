@@ -10,9 +10,12 @@ var Task = React.createClass({
         this.setState({showTask: false});
     },
     exercises: function () {
-        this.setState({showTask: true}); 
+        this.setState({showTask: true});
     },
     render: function () {
+        if(this.props.task == null) {
+            return <div>Выберите урок</div>
+        }
         return <div>
             <table>
                 <tbody>
@@ -23,14 +26,15 @@ var Task = React.createClass({
                         </div>
                     </td>
                     <td>
-                        <div className={"exercise" + (this.state.showTask ? " selected" : "")} onClick={this.exercises}>
+                        <div className={"exercise" + (this.state.showTask ? " selected" : "")}
+                             onClick={this.exercises}>
                             Задание
                         </div>
                     </td>
                 </tr>
                 </tbody>
             </table>
-            <div>{this.state.showTask ? <TaskText text={this.props.text}/> : <TaskLesson/>}</div>
+            <div>{this.state.showTask ? <TaskText text={this.props.task.text}/> : <TaskLesson/>}</div>
         </div>
 
     }
