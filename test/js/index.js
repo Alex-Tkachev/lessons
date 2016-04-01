@@ -1,7 +1,7 @@
 var React = require('react'),
     ReactDOM = require('react-dom'),
     {TaskList} = require('./taskList'),
-    
+
     {tasks} = require('./tasks'),
     {Task} = require('./task'),
     {TaskLesson} = require('./taskLesson');
@@ -11,8 +11,8 @@ var MainForm = React.createClass({
     getInitialState: function () {
         return {text: ""};
     },
-    setNewText: function(newText, lessonFile) {
-      this.setState({text: newText, lessonFile: lessonFile})
+    setNewText: function (newText, lessonFile) {
+        this.setState({text: newText, lessonFile: lessonFile})
     },
     render: function () {
         return <table className="page-root">

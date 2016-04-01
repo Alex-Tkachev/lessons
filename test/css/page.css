@@ -34,6 +34,14 @@ button {
     width: 150px;
 }
 
-.lighted{
+.lesson{
+    text-align: center;
+}
+
+.exercise{
+    text-align: center;
+}
+
+.lighted {
     border-color: red;
 }

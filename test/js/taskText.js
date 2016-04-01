@@ -12,7 +12,7 @@ var TaskText = React.createClass({
           if(!this.refs[this.state.refs[i]].isValid()){
               count++;
           }
-        }
+        } 
     },
     render: function () {
 
