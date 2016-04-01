@@ -24,14 +24,26 @@ input {
 .task-text {
     text-indent: 25px;
     float: right;
+    width : 100%;
 }
 .task{
     white-space: nowrap;
+
 }
 
-button {
+.butt {
     margin-left: calc(50% - 75px);
     width: 150px;
+    background-color: #008080;
+    border: none;
+    color: orange;
+    padding: 15px 32px;
+    text-align: center;
+    cursor: pointer;
+    font-size : 20px;
+}
+.butt:hover {
+    color: yellow;
 }
 
 .lesson{
@@ -42,6 +54,15 @@ button {
     text-align: center;
 }
 
-.lighted {
-    border-color: red;
+.errlighted {
+     border-color: red;
+ }
+.corlighted {
+    border-color: green;
+}
+.main {
+    width : 100%;
+}
+.page-root {
+    width:100%;
 }
