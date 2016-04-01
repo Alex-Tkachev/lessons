@@ -7,7 +7,11 @@ var url = window.location.protocol + '//' + window.location.host;
 
 function getTasks() {
     return requestPromise(url + '/tasks/index.txt').then(function (response) {
-        return response.split('\r\n').map(JSON.parse);
+        return response.split('\r\n').map(function(task){
+            task = JSON.parse(task);
+            task.lessonFile = url + "/tasks/" + task.lessonFile;
+            return task;
+        });
     })
 }
 
