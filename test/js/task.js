@@ -34,7 +34,7 @@ var Task = React.createClass({
                 </tr>
                 </tbody>
             </table>
-            <div>{this.state.showTask ? <TaskText text={this.props.task.text}/> : <TaskLesson/>}</div>
+            <div>{this.state.showTask ? <TaskText text={this.props.task.text}/> : <TaskLesson lesson={this.props.task.lessonFile}/>}</div>
         </div>
 
     }

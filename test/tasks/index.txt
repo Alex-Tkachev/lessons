@@ -1,2 +1,2 @@
-{"name": "Урок 1", "lessonFile": "Lesson1", "taskFile": "Example1"}
-{"name": "Урок 2", "lessonFile": "Lesson2", "taskFile": "Example2"}
+{"name": "Урок 1", "lessonFile": "lessons/lesson1/lesson1.html", "taskFile": "Example1"}
+{"name": "Урок 2", "lessonFile": "lessons/lesson2/lesson2.html", "taskFile": "Example2"}
