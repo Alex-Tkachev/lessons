@@ -14,7 +14,7 @@ var Task = React.createClass({
     },
     render: function () {
         return <div>
-            <table>
+            <table className="main">
                 <tbody>
                 <tr>
                     <td>

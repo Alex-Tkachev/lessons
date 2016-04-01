@@ -35,11 +35,14 @@ button {
 }
 
 .lesson{
-    align: center;
+    text-align: center;
+}
+.main {
+    width : 100%;
 }
 
 .exercise{
-    align: center;
+    text-align: center;
 }
 
 .errlighted {
