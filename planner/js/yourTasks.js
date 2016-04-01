@@ -7,20 +7,10 @@ var YourTasks = React.createClass({
     render: function () {
         var self = this;
         return <div>
-            <table>
-                <tbody>
-                {taskService.sortedTasks.map(function (item, index) {
-                    return <tr key={index}>
-                        <td>
-                            <div className={self.setClassName(item)} onClick={self.startWork.bind(self, item)}>{item.text}</div>
-                        </td>
-                        <td>
-                            <button className="form-element" onClick={self.deleteTask.bind(self, item)}>Delete</button>
-                        </td>
-                    </tr>
-                })}
-                </tbody>
-            </table>
+            {taskService.sortedTasks.map(function (item, index) {
+                return <div key={index} className={self.setClassName(item)}
+                            onClick={self.startWork.bind(self, item)}>{item.text}</div>;
+            })}
         </div>;
     },
     deleteTask: function (task) {
