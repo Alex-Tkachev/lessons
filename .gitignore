@@ -211,3 +211,4 @@ Xamarin/droid.Mvvm/Resources/Resource.Designer.cs
 Web/Web.React/Content/FlashPlayer.swf
 .vagrant
 **/dist
+**nodejs
