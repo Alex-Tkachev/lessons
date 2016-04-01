@@ -9,17 +9,17 @@ var React = require('react'),
 
 var MainForm = React.createClass({
     getInitialState: function () {
-        return {text: ""};
+        return {task: null};
     },
     setNewText: function (newText, lessonFile) {
-        this.setState({text: newText, lessonFile: lessonFile})
+        this.setState({task: {text: newText, lessonFile: lessonFile}})
     },
     render: function () {
         return <table className="page-root">
             <tbody>
             <tr>
                 <td><TaskList changeText={this.setNewText}/></td>
-                <td><Task text={this.state.text}/></td>
+                <td><Task task={this.state.task}/></td>
             </tr>
             </tbody>
         </table>
