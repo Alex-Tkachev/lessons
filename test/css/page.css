@@ -35,13 +35,16 @@ button {
 }
 
 .lesson{
-    text-align: center;
+    align: center;
 }
 
 .exercise{
-    text-align: center;
+    align: center;
 }
 
-.lighted {
+.errlighted {
     border-color: red;
+}
+.corlighted {
+    border-color: green;
 }
