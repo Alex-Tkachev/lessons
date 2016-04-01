@@ -13,7 +13,10 @@ var ChoiseBox = React.createClass({
     isValid: function () {
         var bol = ReactDOM.findDOMNode(this.refs.inp).value == this.props.correctAnswer;
          if(!bol) {
-             this.setState({className : 'lighted'});
+             this.setState({className : 'errlighted'});
+         }
+        else {
+             this.setState({className : 'corlighted'});
          }
         return bol;
     },
