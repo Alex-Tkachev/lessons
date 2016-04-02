@@ -1,7 +1,8 @@
 input {
-    width: 15px;
+    width: 10px;
+    border: solid 2.5px #D3D3D3;
+    transition: border 0.3s;
 }
-
 .name {
     border-bottom: 2px solid black;
 }
@@ -14,7 +15,6 @@ input {
     width: 1%;
     vertical-align: top;
 }
-
 .task-list {
     border-right: 2px solid BLACK;
     padding-right: 10px;
@@ -26,11 +26,11 @@ input {
 }
 .lessonTable{
     width: 100%;
+    border: 2px solid;
 }
 .tableDiv {
     width : 100%;
 }
-
 .task-text {
     text-indent: 25px;
     float: right;
@@ -38,29 +38,29 @@ input {
 }
 .task{
     white-space: nowrap;
-
 }
-
 .text {
     padding: 20px;
 }
-
 .butt {
+    display: inline-block;
+    color: black;
+    font-weight: 700;
+    text-decoration: none;
+    user-select: none;
     margin-left: calc(50% - 75px);
-    width: 100px;
-    border: none;
-    text-align: center;
-    cursor: pointer;
-    font-size : 20px;
+    padding: .5em 2em;
+    outline: none;
+    border: 2px solid;
+    border-radius: 1px;
+    transition: 0.2s;
 }
 .butt:hover {
-    color: yellow;
+    background: #8B8989;
 }
-
 .lesson{
     text-align: center;
 }
-
 .exercise{
     text-align: center;
 }

@@ -1,0 +1,28 @@
+body {margin: 0; padding: 0; background: white;}
+body, td, th {font-size: 80%; font-family: arial, sans-serif; vertical-align: top; text-align: left;}
+
+body, a, a:visited, h1, h2, h3, h4 {color: black;}
+
+table, img {border: 0;}
+
+p {margin: 0 0 1.2em 0;}
+
+h2, h4 {margin: 0 0 0.4em 0; font-weight: bold;}
+h1 {margin: 1em 0 0.6em 0; font-size: 200%; font-weight: normal;}
+.first {margin-top: 0.6em;}
+h2 {font-size: 130%; margin: 0 0 0.4em 0;}
+h3 {font-size: 130%; margin: 1.2em 0 0.4em 0; font-weight: bold;}
+h4 {font-size: 100%; margin: 0 0 0.4em 0;}
+
+div.logo-text, div.menu-icons, div.menu, div.adv-block, div.pen, div.clock, div.ink, div.ink-dots, div.navigation, div.header, div.spacer, hr {display: none;}
+
+div.layout {min-height: 0; height: auto;}
+table.layout {height: auto;}
+
+div.logo {display: none;}
+div.logo-print {display: block; margin: 20px 0 20px 0;}
+
+div.picture {float: left; margin: 0 22px 16px 2em; font-size: 80%;}
+* html div.picture {margin-left: 12px;}
+
+div.copyright {margin: 1.2em 0 0 0; font-size: 90%;}

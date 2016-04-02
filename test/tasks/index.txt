@@ -1,2 +1,4 @@
 {"name": "Урок 1", "lessonFile": "lessons/lesson1/lesson1.html", "taskFile": "Example1"}
 {"name": "Урок 2", "lessonFile": "lessons/lesson2/lesson2.html", "taskFile": "Example2"}
+{"name": "Урок 3", "lessonFile": "lessons/lesson3/lesson3.html", "taskFile": "Example3"}
+{"name": "Урок 4", "lessonFile": "lessons/lesson4/lesson4.html", "taskFile": "Example4"}
