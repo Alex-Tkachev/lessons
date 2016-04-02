@@ -21,10 +21,15 @@ var ChoiseBox = React.createClass({
         return bol;
     },
     render: function () {
-        return <input value={this.state.value} className={this.state.className} onKeyPress={this.handleChange} ref="inp"/>
+        return <input value={this.state.value} placeholder="?" className={this.state.className} onKeyDown={this.keyDown} onKeyPress={this.handleChange} ref="inp"/>
+    },
+    keyDown: function () {
+        this.setState({value: '', className: ''})
     },
     handleChange : function (event) {
-        this.setState({value : String.fromCharCode(event.which), className : ''});
+        if (event.which) {
+            this.setState({value: String.fromCharCode(event.which)});
+        }
     }
 });
 
