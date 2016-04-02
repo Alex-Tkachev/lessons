@@ -1,6 +1,6 @@
 var requestPromise = require("request-promise");
 
-var url = window.location.protocol + '//' + window.location.host + "/test";
+var url = window.location.protocol + '//' + window.location.host;
 
 
 
